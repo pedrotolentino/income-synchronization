@@ -107,7 +107,7 @@ public class IncomeSynchronizationApplication implements CommandLineRunner {
 			}
 			LOGGER.info(getPropertyMessage("track.info.close.output.file"));
 		} catch (IOException i) {
-			throw new BusinessException(getPropertyMessage("exception.writing.file", i.getMessage()));
+			throw new BusinessException(getPropertyMessage("exception.writing.file", i.toString()));
 		}
 	}
 
@@ -129,7 +129,7 @@ public class IncomeSynchronizationApplication implements CommandLineRunner {
 		try {
 			lines = Files.readAllLines(path);
 		} catch (IOException i) {
-			throw new BusinessException(getPropertyMessage("exception.reading.file", i.getMessage()));
+			throw new BusinessException(getPropertyMessage("exception.reading.file", i.toString()));
 		}
 
 		if (validateHeader(lines.get(0))) {
